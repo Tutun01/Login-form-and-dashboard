@@ -1,4 +1,4 @@
-/* Reset osnovnih margina i font */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@
     font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* Glavni kontejner stranice */
+
 body {
     background: linear-gradient(135deg, #0d1117, #161b22);
     color: #e6edf3;
@@ -17,7 +17,7 @@ body {
     justify-content: center;
 }
 
-/* Naslov */
+
 h2 {
     font-size: 2rem;
     font-weight: 600;
@@ -26,7 +26,7 @@ h2 {
     color: #58a6ff;
 }
 
-/* Navigacija (ako dodaš kasnije) */
+
 nav {
     background: #21262d;
     padding: 10px 20px;
@@ -70,7 +70,7 @@ nav ul li a:hover {
     transform: scale(1.05);
 }
 
-/* Kartica sadržaja (opcionalno) */
+
 .card {
     background: #21262d;
     border-radius: 12px;
@@ -87,7 +87,7 @@ nav ul li a:hover {
     margin-bottom: 10px;
 }
 
-/* Responsive */
+
 @media (max-width: 600px) {
     h2 {
         font-size: 1.6rem;
