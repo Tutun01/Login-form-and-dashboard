@@ -27,7 +27,7 @@ $email = $_SESSION['email'];
     <p>You have successfully logged in.</p>
     <p>You can add content for registered users here — links, dashboard, etc.</p>
 
-    <a href="index.html" class="logout">Log Out</a>
+    <a href="logout.php" class="logout">Log Out</a>
 </main>
 
 </body>
