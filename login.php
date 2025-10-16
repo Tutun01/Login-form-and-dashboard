@@ -17,8 +17,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($user = mysqli_fetch_assoc($result)) {
            
             if (password_verify($password, $user['password'])) {
+
+                $_SESSION['user_id'] = $user['id'];
                 $_SESSION['email'] = $user['email'];
-                header("Location: homepage.php");
+                $_SESSION['name'] = $user['name'];
+                $_SESSION['role'] = $user['role'];
+
+                if ($user['role'] === 'admin') {
+                    header("Location: admin_dashboard.php");
+                } else {
+                    header("Location: homepage.php");
+                }
                 exit();
             } else {
                 echo "<p style='color:red; text-align:center;'>Incorrect password.</p>";
