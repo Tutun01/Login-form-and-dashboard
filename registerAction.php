@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (!empty($name) && !empty($email) && !empty($password)) {
 
         
-        $checkQuery = "SELECT COUNT(*) AS number FROM `User` WHERE email = ?";
+        $checkQuery = "SELECT COUNT(*) AS number FROM users WHERE email = ?";
         $stmt = mysqli_prepare($connect, $checkQuery);
         mysqli_stmt_bind_param($stmt, "s", $email);
         mysqli_stmt_execute($stmt);
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
             
-            $sql = "INSERT INTO `User` (name, email, password) VALUES (?, ?, ?)";
+            $sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
             $stmt = mysqli_prepare($connect, $sql);
             mysqli_stmt_bind_param($stmt, "sss", $name, $email, $hashedPassword);
 
