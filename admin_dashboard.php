@@ -40,6 +40,10 @@ $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         <td><?= htmlspecialchars($rows[$i]['email']) ?></td>
                         <td>
                             <a href="edit-user.php?id=<?= urlencode($rows[$i]['ID']) ?>" class="edit-btn">Edit</a>
+                            <form method="POST" action="delete-user.php" class="delete-form" onsubmit="return deleteUser(event, this);">
+                            <input type="hidden" name="id" value="<?= htmlspecialchars($rows[$i]['ID']) ?>">
+                            <button type="submit" class="delete-btn">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 <?php endfor; ?>
