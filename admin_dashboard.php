@@ -48,5 +48,16 @@ $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <p style="text-align:center; color:gray;">No users found in the database.</p>
         <?php endif; ?>
     </div>
+
+    <div id="addNewUser">
+        <form method="POST" action="add-user.php">
+        <input type="text" name="name" placeholder="Enter name for a new user" required>
+        <input type="email" name="email" placeholder="Enter email for a new user" required>
+        <input type="password" name="password" placeholder="Enter password for a new user" required>
+        <input type="text" name="role" placeholder="Enter role for a new user" required>
+        <button type="submit" id="submitBtn">Add User</button>
+    </form>
+    </div>
+    <script src="delete-user.js"></script>
 </body>
 </html>
