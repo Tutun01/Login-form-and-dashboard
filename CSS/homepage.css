@@ -31,3 +31,96 @@ body {
         a.logout:hover {
             background-color: #b02a37;
         }
+
+      
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.4s ease-in-out;
+}
+
+
+.blog-card {
+    flex: 0 0 calc(44% - 20px);
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    transition: all 0.25s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border-color: #0078d7;
+}
+
+.blog-card img {
+    width: 100%;
+    border-radius: 8px;
+    height: 180px;
+    object-fit: cover;
+}
+
+.blog-card h3 {
+    color: #0078d7;
+    margin: 10px 0 8px;
+}
+
+.blog-card p {
+    color: #555;
+    margin: 6px 0;
+    line-height: 1.4;
+}
+
+
+.buyBtn {
+    width: 100%;
+    padding: 10px;
+    background-color: #0078d7;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.buyBtn:hover { background-color: #005fa3; }
+
+
+.slide-btn {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.4);
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 50%;
+    transition: background 0.3s;
+    z-index: 2;
+}
+.slide-btn:hover {
+    background-color: rgba(0,0,0,0.7);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+@media (max-width: 900px) {
+    .blog-card { flex: 0 0 calc(50% - 20px); }
+}
+@media (max-width: 600px) {
+    .blog-card { flex: 0 0 100%; }
+}
