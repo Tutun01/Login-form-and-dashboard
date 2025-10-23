@@ -62,6 +62,6 @@ $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
         <button type="submit" id="submitBtn">Add User</button>
     </form>
     </div>
-    <script src="delete-user.js"></script>
+    <script src="JS/delete-user.js"></script>
 </body>
 </html>
