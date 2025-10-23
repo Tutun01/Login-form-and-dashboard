@@ -84,7 +84,7 @@ body {
 
 
 .buyBtn {
-    width: 100%;
+    display: block;
     padding: 10px;
     background-color: #0078d7;
     border: none;
@@ -93,6 +93,8 @@ body {
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
+    text-decoration: none;
+    margin-top: 10px;
 }
 .buyBtn:hover { background-color: #005fa3; }
 
