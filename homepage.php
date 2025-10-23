@@ -50,7 +50,7 @@ $result = $connect->query($sql);
                         <p>" . htmlspecialchars($row['description']) . "</p>
                         <p><strong>Price:</strong> $" . number_format($row['price'], 2) . "</p>
                         <p><strong>In stock:</strong> " . $row['stock'] . "</p>
-                        <button class='buyBtn'>Buy Now</button>
+                        <a href='single_product.php?id=" . $row['id'] . "' class='buyBtn'>Buy Now</a>
                     </div>
                     ";
                 }
@@ -64,6 +64,6 @@ $result = $connect->query($sql);
     </div>
 </main>
 
-   <script src="JS/slider.js"></script>
+ <script src="JS/slider.js"></script>
 </body>
 </html>
