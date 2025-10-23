@@ -17,8 +17,6 @@ if (!isset($_POST['id'])) {
 
 $id = intval($_POST['id']);
 
-var_dump($id);
-
 $query = "DELETE FROM users WHERE ID = ? ";
 $stmt = mysqli_prepare($connect, $query);
 
