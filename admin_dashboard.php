@@ -58,7 +58,7 @@ $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
         <input type="text" name="name" placeholder="Enter name for a new user" required>
         <input type="email" name="email" placeholder="Enter email for a new user" required>
         <input type="password" name="password" placeholder="Enter password for a new user" required>
-        <input type="text" name="role" placeholder="Enter role for a new user" required>
+        <input type="text" name="role" placeholder="Enter role for a new user" value="user" readonly>
         <button type="submit" id="submitBtn">Add User</button>
     </form>
     </div>
