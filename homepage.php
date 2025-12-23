@@ -24,8 +24,8 @@ $result = $connect->query($sql);
 <body>
 
 <header>
-    <h1>Welcome to the Home Page</h1>
-    
+    <img class="logo-picture" src="images/logo.png" alt="logo">
+    <h1 class="title-h1">Welcome to the Home Page</h1>
 </header>
 
 <main>
