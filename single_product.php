@@ -30,11 +30,16 @@ $product = $result->fetch_assoc();
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($product['name']); ?> | Tech Store</title>
     <link rel="stylesheet" href="CSS/single_product.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
 <header>
-    <h1>Tech Store</h1>
+    <img class="logo-picture" src="images/logo.png" alt="logo">
+    <h1 class="title-h1">Market</h1>
+    <a href="basket.php">
+        <i class="fa-solid fa-cart-shopping basket-icon"></i>
+    </a>
 </header>
 
 <main class="product-container">
@@ -57,9 +62,46 @@ $product = $result->fetch_assoc();
 
         <p class="description"><?php echo htmlspecialchars($product['description']); ?></p>
 
-        <button class="buyBtn">Buy Now</button>
+        <button class="buyBtn" onclick="openPopup()">Buy Now</button>
+
+        <div 
+    id="popup" 
+    class="popup" 
+    data-price="<?php echo (float)$product['price']; ?>"
+>
+    <div class="popup-content">
+        <h2><?php echo htmlspecialchars($product['name']); ?></h2>
+
+        <strong>Price:</strong>
+        $<span id="totalPrice">
+            <?php echo number_format($product['price'], 2); ?>
+        </span>
+        <br><br>
+
+        <strong>Quantity:</strong>
+        <input
+            type="number"
+            id="quantity"
+            min="0"
+            max="<?php echo (int)$product['stock']; ?>"
+            value="0"
+        >
+        <br><br>
+
+        <button 
+        class="buyButton"
+        id="buyButton"
+        data-id="<?php echo (int)$product['id']; ?>"
+    >
+        Buy
+    </button>        
+        <button class="closeBtn" id="closePopup">Close</button>
+        </div>
     </div>
+</div>
 </main>
+
+   <script src="JS/buy-popup.js"></script>
 
 </body>
 </html>
