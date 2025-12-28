@@ -2,6 +2,7 @@
 session_start();
 
 require_once 'database.php';
+require_once 'vendor/autoload.php';
 
 if (!isset($_SESSION['email'])) {
     header("Location: login.php");
@@ -11,6 +12,39 @@ $email = $_SESSION['email'];
 
 $sql= "SELECT * FROM products";
 $result = $connect->query($sql); 
+
+$query = "SELECT * FROM products ORDER BY id DESC LIMIT 2";
+$result1 = $connect->query($query); 
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$apiUrl = $_ENV['API_URL'];
+$apiKey = $_ENV['API_KEY'];
+
+$url = $apiUrl . "&apiKey=" . $apiKey;
+
+$ch = curl_init($url);
+
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_TIMEOUT => 10,
+    CURLOPT_HTTPHEADER => [
+        'User-Agent: Mozilla/5.0',
+        'Accept: application/json'
+    ]
+]);
+
+$response = curl_exec($ch);
+
+if ($response === false) {
+    die('cURL error: ' . curl_error($ch));
+}
+
+curl_close($ch);
+
+$data = json_decode($response, true);
+$articles = $data['articles'] ?? [];
 
 ?>
 
@@ -61,6 +95,65 @@ $result = $connect->query($sql);
             ?>
         </div>
         <button class="slide-btn next">&#10095;</button>
+    </div>
+</main>
+
+<main>
+    <h2>Last added</h2>
+    <div class="slider-container">
+    
+        <div class="slider">
+            <?php
+            if (!$result1->num_rows > 0) {
+                echo "<p>No products available.</p>";
+            } else {
+               while ($row = $result1->fetch_assoc()) {
+                    echo "
+                    <div class='blog-card'>
+                        <img src='" . htmlspecialchars($row['image_url']) . "' alt='Product image'>
+                        <h3>" . htmlspecialchars($row['name']) . "</h3>
+                        <p>" . htmlspecialchars($row['description']) . "</p>
+                        <p><strong>Price:</strong> $" . number_format($row['price'], 2) . "</p>
+                        <p><strong>In stock:</strong> " . $row['stock'] . "</p>
+                        <a href='single_product.php?id=" . $row['id'] . "' class='buyBtn'>Buy Now</a>
+                    </div>
+                    ";
+                }
+            }
+            ?>
+        </div>
+    </div>
+    
+    <main>
+    <h2>Tech blogs</h2>
+    <div class="slider-container">
+        <button class="slide-btn prev">&#10094;</button>
+       <div class="slider">
+            <?php
+            if (!empty($data['articles'])) {
+                foreach ($data['articles'] as $article) {
+
+                     $image = !empty($article['urlToImage'])
+                        ? htmlspecialchars($article['urlToImage'])
+                        : 'images/default-blog.jpg';
+
+                    echo "
+                    <div class='blog-card'>
+                        <img src='{$image}' alt='" . htmlspecialchars($article['title']) . "' class='blog-image'>
+                        <h3>" . htmlspecialchars($article['title']) . "</h3>
+                        <p>" . htmlspecialchars($article['description']) . "</p>
+                        <a href='" . htmlspecialchars($article['url']) . "' target='_blank'>
+                            Read more
+                        </a>
+                    </div>
+                    ";
+                }
+            } else {
+                echo "<p>No tech blogs available.</p>";
+            }
+            ?>
+        </div>
+         <button class="slide-btn next">&#10095;</button>
     </div>
 </main>
 
