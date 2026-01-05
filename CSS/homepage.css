@@ -130,6 +130,14 @@ body {
 .prev { left: 10px; }
 .next { right: 10px; }
 
+.Read_more {
+    text-decoration: none;
+    color: #0277d7;
+    position: absolute;
+    bottom: 3.4rem;
+   
+}
+
 @media (max-width: 900px) {
     .blog-card { 
         flex: 0 0 calc(50% - 20px); 
