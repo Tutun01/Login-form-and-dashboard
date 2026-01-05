@@ -1,19 +1,30 @@
 <?php
 session_start();
-
 require_once 'database.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Basket</title>
+    <link rel="stylesheet" href="CSS/basket.css">
+</head>
+<body>
 
+<?php
 if (empty($_SESSION['cart'])) {
     echo "<h2>Your basket is empty.</h2>";
     exit;
 }
 
 $totalSum = 0;
+?>
 
-echo "<h2>Your Basket</h2>";
+<h2>Your Basket</h2>
 
-foreach ($_SESSION['cart'] as $productId => $quantity) {
+<?php foreach ($_SESSION['cart'] as $productId => $quantity): ?>
 
+    <?php
     $productId = (int)$productId;
     $quantity = (int)$quantity;
 
@@ -25,19 +36,29 @@ foreach ($_SESSION['cart'] as $productId => $quantity) {
     }
 
     $product = $result->fetch_assoc();
-
     $itemTotal = $product['price'] * $quantity;
     $totalSum += $itemTotal;
     ?>
 
-    <div style="border:1px solid #ccc; padding:15px; margin-bottom:10px;">
-        <strong>Product:</strong> <?= htmlspecialchars($product['name']) ?><br>
-        <strong>Price:</strong> $<?= number_format($product['price'], 2) ?><br>
-        <strong>Quantity:</strong> <?= $quantity ?><br>
-        <strong>Total:</strong> $<?= number_format($itemTotal, 2) ?>
+    <div class="basket-item" data-total="<?= $itemTotal ?>">
+        <div class="item-info">
+            <strong>Product:</strong> <?= htmlspecialchars($product['name']) ?><br>
+            <strong>Price:</strong> $<?= number_format($product['price'], 2) ?><br>
+            <strong>Quantity:</strong> <?= $quantity ?><br>
+            <strong>Total:</strong> $<?= number_format($itemTotal, 2) ?>
+        </div>
+
+        <button class="deleteBtn">Delete</button>
     </div>
 
-    <?php
-}
+<?php endforeach; ?>
 
-echo "<h3>Grand Total: $" . number_format($totalSum, 2) . "</h3>";
+<h3 class="grand-total">
+    Grand Total: $<span id="grandTotal"><?= number_format($totalSum, 2) ?></span>
+    <button class="buyBtn">BUY</button>
+</h3>
+
+<script src="JS/basket.js"></script>
+
+</body>
+</html>
