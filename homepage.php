@@ -127,7 +127,7 @@ $articles = $data['articles'] ?? [];
     <main>
     <h2>Tech blogs</h2>
     <div class="slider-container">
-        <button class="slide-btn prev">&#10094;</button>
+        
        <div class="slider">
             <?php
             if (!empty($data['articles'])) {
@@ -142,7 +142,7 @@ $articles = $data['articles'] ?? [];
                         <img src='{$image}' alt='" . htmlspecialchars($article['title']) . "' class='blog-image'>
                         <h3>" . htmlspecialchars($article['title']) . "</h3>
                         <p>" . htmlspecialchars($article['description']) . "</p>
-                        <a href='" . htmlspecialchars($article['url']) . "' target='_blank'>
+                        <a href='" . htmlspecialchars($article['url']) . "' target='_blank' class='Read_more'>
                             Read more
                         </a>
                     </div>
@@ -153,7 +153,7 @@ $articles = $data['articles'] ?? [];
             }
             ?>
         </div>
-         <button class="slide-btn next">&#10095;</button>
+        
     </div>
 </main>
 
