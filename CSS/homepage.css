@@ -1,40 +1,69 @@
 body {
 
-            font-family: Arial, sans-serif;
-            background-color: #f2f3f5;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-        background-color: #0456cf;
-        color: white;
-        padding: 15px 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        }
-        main {
-            margin: 50px auto;
-            max-width: 600px;
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        a.logout {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 15px;
-            background-color: #dc3545;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-        }
-        a.logout:hover {
-            background-color: #b02a37;
-        }
+    font-family: Arial, sans-serif;
+    background-color: #f2f3f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #0456cf;
+    color: white;
+    padding: 15px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.title-h1 {
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.navbar {
+    position: absolute;
+    right: 15rem;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 10px;
+    transition: background 0.2s ease;
+}
+
+.navbar a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+main {
+    margin: 50px auto;
+    max-width: 900px;
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+a.logout {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #dc3545;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+a.logout:hover {
+    background-color: #b02a37;
+}
 
 .logo-picture {
      height: 90px;   
