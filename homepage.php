@@ -95,7 +95,6 @@ $articles = $data['articles'] ?? [];
                 } else {
                     echo "<p>No products available.</p>";
                 }
-                $connect->close();
                 ?>
             </div>
             <button class="slide-btn next">&#10095;</button>
@@ -162,6 +161,9 @@ $articles = $data['articles'] ?? [];
     </main>
 
  <script src="JS/slider.js"></script>
-
 </body>
 </html>
+
+<?php
+$connect->close();
+?>
