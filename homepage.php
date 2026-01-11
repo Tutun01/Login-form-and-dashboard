@@ -59,13 +59,29 @@ $articles = $data['articles'] ?? [];
 
 <header>
     <img class="logo-picture" src="images/logo.png" alt="logo">
-    <h1 class="title-h1">Welcome to the Home Page</h1>
+    <h1 class="title-h1">Home Page</h1>
     <nav class="navbar">
         <a href="shop.php">Shop</a>
     </nav>
 </header>
 
+<div class="banner">
+  <div class="banner-inner">
 
+    <div class="banner-content">
+      <h2 class="marquee-title">PC MARKET</h2>
+      <p class="marquee-subtitle">Top hardware, best prices</p>
+      <p class="slogan">Your PC. Your Rules.</p>
+      <a href="shop.php" class="cta">Shop now</a>
+    </div>
+
+    <div class="banner-visual">
+      <img src="images/banner image.png" alt="PC banner">
+    </div>
+
+  </div>
+</div>
+        
     <main>
         <h2>Hello, <?= htmlspecialchars($email) ?>!</h2>
         <p>You have successfully logged in.</p>

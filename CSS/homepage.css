@@ -1,5 +1,10 @@
-body {
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
+body {
     font-family: Arial, sans-serif;
     background-color: #f2f3f5;
     color: #333;
@@ -18,9 +23,14 @@ header {
 }
 
 .title-h1 {
-    color: white;
     font-size: 32px;
     font-weight: 700;
+}
+
+.logo-picture {
+    height: 90px;
+    position: absolute;
+    left: 24px;
 }
 
 .navbar {
@@ -51,27 +61,6 @@ main {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-a.logout {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 15px;
-    background-color: #dc3545;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-}
-
-a.logout:hover {
-    background-color: #b02a37;
-}
-
-.logo-picture {
-     height: 90px;   
-    width: auto;
-    position: absolute;
-    left: 24px;
-}
-      
 .slider-container {
     position: relative;
     width: 100%;
@@ -86,33 +75,50 @@ a.logout:hover {
     transition: transform 0.4s ease-in-out;
 }
 
-
 .blog-card {
-    flex: 0 0 calc(44% - 20px);
+    position: relative;
+    flex: 0 0 calc(50% - 10px);
+
     background-color: #ffffff;
-    border: 1px solid #e0e0e0;
     border-radius: 12px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
     padding: 20px;
-    transition: all 0.25s ease;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    overflow: hidden;
+}
+
+.blog-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+
+    box-shadow: inset 0 0 0 1px #e0e0e0;
+    transition: box-shadow 0.25s ease;
 }
 
 .blog-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    border-color: #0078d7;
+}
+
+.blog-card:hover::before {
+    box-shadow: inset 0 0 0 2px #0078d7;
 }
 
 .blog-card img {
     width: 100%;
-    border-radius: 8px;
     height: 180px;
+    border-radius: 8px;
     object-fit: cover;
 }
 
 .blog-card h3 {
     color: #0078d7;
-    margin: 10px 0 8px;
+    margin: 12px 0 8px;
 }
 
 .blog-card p {
@@ -121,37 +127,38 @@ a.logout:hover {
     line-height: 1.4;
 }
 
-
 .buyBtn {
     display: block;
-    padding: 10px;
+    margin-top: 12px;
+    padding: 12px;
     background-color: #0078d7;
-    border: none;
     border-radius: 8px;
     color: white;
     font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+    text-align: center;
     text-decoration: none;
-    margin-top: 10px;
+    transition: background 0.3s ease;
 }
-.buyBtn:hover { background-color: #005fa3; }
 
+.buyBtn:hover {
+    background-color: #005fa3;
+}
 
 .slide-btn {
     position: absolute;
-    top: 45%;
+    top: 50%;
     transform: translateY(-50%);
     background-color: rgba(0,0,0,0.4);
     border: none;
     color: white;
-    font-size: 28px;
+    font-size: 26px;
     cursor: pointer;
-    padding: 10px 15px;
+    padding: 10px 14px;
     border-radius: 50%;
-    transition: background 0.3s;
     z-index: 2;
+    transition: background 0.3s;
 }
+
 .slide-btn:hover {
     background-color: rgba(0,0,0,0.7);
 }
@@ -159,67 +166,134 @@ a.logout:hover {
 .prev { left: 10px; }
 .next { right: 10px; }
 
-.Read_more {
-    text-decoration: none;
-    color: #0277d7;
-    position: absolute;
-    bottom: 3.4rem;
-   
+.banner {
+    width: 100%;
+    padding: 60px 0;
+    background: #ffffff;
 }
 
-@media (max-width: 900px) {
+.banner-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
 
-    .content-card > main {
-        grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.banner-content {
+    flex: 1;
+}
+
+.banner-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.banner-visual img {
+    max-width: 100%;
+    height: auto;
+}
+
+.marquee-title {
+    font-size: 56px;
+    font-weight: 800;
+    color: #0a58ca;
+    margin-bottom: 16px;
+
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.marquee-subtitle {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 10px;
+
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease forwards;
+    animation-delay: 0.2s;
+}
+
+.slogan {
+    font-size: 22px;
+    font-weight: 600;
+    color: #0a58ca;
+    margin-bottom: 30px;
+
+    opacity: 0;
+    animation: slideFade 5s ease-in-out infinite;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideFade {
+    0% { opacity: 0; transform: translateX(-15px); }
+    20% { opacity: 1; transform: translateX(0); }
+    80% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 0; transform: translateX(15px); }
+}
+
+.cta {
+    display: inline-block;
+    padding: 14px 36px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #0a58ca, #0047b3);
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    box-shadow: 0 16px 40px rgba(10, 88, 202, 0.4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 22px 50px rgba(10, 88, 202, 0.55);
+}
+
+
+@media (max-width: 1024px) {
+    .marquee-title { font-size: 44px; }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px 20px;
     }
 
     .logo-picture {
-        height: 50px;
-    }
-
-    .title-h1 {
-        font-size: 26px;
-    }
-}
-
-@media (max-width: 600px) {
-
-    header {
-        padding: 14px 20px;
+        position: static;
+        height: 48px;
     }
 
     .navbar {
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
+        position: static;
     }
 
-    .navbar a {
-        font-size: 16px;
-        padding: 8px 14px;
-    }
-
-    .content-card > main {
-        grid-template-columns: 1fr;
+    .banner-inner {
+        flex-direction: column;
+        text-align: center;
     }
 
     .blog-card {
-        max-width: 420px;
-        margin: 0 auto;
-    }
-
-    .logo-picture {
-        height: 40px;
-    }
-
-    .title-h1 {
-        font-size: 20px;
-        line-height: 1.3;
-        padding: 0 12px;
-        text-align: center;
-        word-break: break-word;
+        flex: 0 0 100%;
     }
 }
 
-
+@media (max-width: 480px) {
+    .marquee-title { font-size: 30px; }
+    .cta { font-size: 16px; padding: 12px 28px; }
+}
