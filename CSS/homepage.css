@@ -52,6 +52,28 @@ header {
     background: rgba(255,255,255,0.2);
 }
 
+.logout {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 12px 28px;
+
+    background: linear-gradient(135deg, #dc3545, #b02a37);
+    color: #ffffff;
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 999px;
+
+
+}
+
+.logout:hover {
+    background: linear-gradient(135deg, #b02a37, #8a1f2b);
+    transform: translateY(-2px);
+}
+
+
 main {
     margin: 50px auto;
     max-width: 900px;
@@ -228,6 +250,24 @@ main {
 
     opacity: 0;
     animation: slideFade 5s ease-in-out infinite;
+}
+
+.Read_more {
+    display: inline-block;
+    margin-top: 12px;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: #0a58ca;
+    text-decoration: none;
+
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.Read_more:hover {
+    color: #063d9c;
+    border-bottom-color: #063d9c;
 }
 
 @keyframes fadeUp {
