@@ -62,6 +62,8 @@ $articles = $data['articles'] ?? [];
     <h1 class="title-h1">Home Page</h1>
     <nav class="navbar">
         <a href="shop.php">Shop</a>
+        <a href="about.php">About us</a>
+        <a href="homepage.php">Homepage</a>
     </nav>
 </header>
 
