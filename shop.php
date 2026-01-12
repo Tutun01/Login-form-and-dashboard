@@ -21,6 +21,8 @@
         <img class="logo-picture" src="images/logo.png" alt="logo">
         <h1 class="title-h1">Shop</h1>
         <nav class="navbar">
+            <a href="shop.php">Shop</a>
+            <a href="about.php">About us</a>
             <a href="homepage.php">Homepage</a>
         </nav>
     </header>
