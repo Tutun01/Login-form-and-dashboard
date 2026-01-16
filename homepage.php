@@ -86,13 +86,13 @@ $articles = $data['articles'] ?? [];
   </div>
 </div>
         
-    <main>
+    <section>
         <h2>Hello, <?= htmlspecialchars($email) ?>!</h2>
         <p>Welcome back! Continue building your custom PC or explore new hardware.</p>
         <a href="logout.php" class="logout">Log Out</a>
-    </main>
+    </section>
 
-    <main>
+    <section>
         <h2>Tech Blog</h2>
         <div class="slider-container">
             <button class="slide-btn prev">&#10094;</button>
@@ -118,9 +118,9 @@ $articles = $data['articles'] ?? [];
             </div>
             <button class="slide-btn next">&#10095;</button>
         </div>
-    </main>
+    </section>
 
-    <main>
+    <section>
         <h2>Last added</h2>
         <div class="slider-container">
 
@@ -145,8 +145,9 @@ $articles = $data['articles'] ?? [];
                 ?>
             </div>
         </div>
+    </section>
 
-        <main>
+        <section>
         <h2>Tech blogs</h2>
         <div class="slider-container">
 
@@ -177,7 +178,7 @@ $articles = $data['articles'] ?? [];
             </div>
         
         </div>
-    </main>
+    </section>
 
  <script src="JS/slider.js"></script>
 </body>

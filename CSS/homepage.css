@@ -11,11 +11,6 @@ body {
     margin: 0;
     padding: 0;
 }
-
-
-
-
-
 .logout {
     display: inline-block;
     margin-top: 24px;
@@ -37,8 +32,7 @@ body {
     transform: translateY(-2px);
 }
 
-
-main {
+section {
     margin: 50px auto;
     max-width: 900px;
     background: white;
