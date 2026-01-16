@@ -54,16 +54,18 @@ $articles = $data['articles'] ?? [];
     <meta charset="UTF-8">
     <title>Home Page</title>
    <link rel="stylesheet" href="CSS/homepage.css">
+   <link rel="stylesheet" href="CSS/navbar.css">
 </head>
 <body>
 
 <header>
     <img class="logo-picture" src="images/logo.png" alt="logo">
-    <h1 class="title-h1">Home Page</h1>
+    <h1 class="title-h1">Homepage</h1>
     <nav class="navbar">
-        <a href="shop.php">Shop</a>
-        <a href="about.php">About us</a>
         <a href="homepage.php">Homepage</a>
+        <a href="about.php">About us</a>
+        <a href="shop.php">Shop</a>
+        <a href="basket.php" class="basket-link">Cart</a>
     </nav>
 </header>
 

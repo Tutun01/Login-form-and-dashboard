@@ -10,45 +10,6 @@ body {
     padding: 0;
 }
 
-header {
-    background-color: #0456cf;
-    color: white;
-    padding: 15px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.title-h1 {
-    font-size: 32px;
-    font-weight: 700;
-}
-
-.logo-picture {
-    height: 90px;
-    position: absolute;
-    left: 24px;
-}
-
-.navbar {
-    position: absolute;
-    right: 3rem;
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 10px;
-    transition: background 0.2s ease;
-}
-
-.navbar a:hover {
-    background: rgba(255,255,255,0.2);
-}
 
 .layout {
     max-width: 1400px;
@@ -164,37 +125,9 @@ header {
         max-width: 500px;
         margin: 0 auto;
     }
-
-    .title-h1 {
-        position: static;
-        transform: none;
-        text-align: center;
-    }
-
-    header {
-        flex-direction: column;
-        gap: 12px;
-    }
 }
 
 @media (max-width: 600px) {
-    header {
-        padding: 14px 18px;
-    }
-
-    .logo-picture {
-        height: 48px;
-    }
-
-    .title-h1 {
-        font-size: 22px;
-    }
-
-    .navbar {
-        width: 100%;
-        justify-content: center;
-    }
-
     .layout {
         padding: 24px 16px;
     }

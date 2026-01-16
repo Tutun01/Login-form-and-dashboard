@@ -30,6 +30,7 @@ $product = $result->fetch_assoc();
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($product['name']); ?> | Tech Store</title>
     <link rel="stylesheet" href="CSS/single_product.css">
+    <link rel="stylesheet" href="CSS/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -37,9 +38,12 @@ $product = $result->fetch_assoc();
 <header>
     <img class="logo-picture" src="images/logo.png" alt="logo">
     <h1 class="title-h1">Market</h1>
-    <a href="basket.php">
-        <i class="fa-solid fa-cart-shopping basket-icon"></i>
-    </a>
+    <nav class="navbar">
+        <a href="homepage.php">Homepage</a>
+        <a href="about.php">About us</a>
+        <a href="shop.php">Shop</a>
+        <a href="basket.php" class="basket-link">Cart</a>
+    </nav>
 </header>
 
 <main class="product-container">

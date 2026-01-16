@@ -1,15 +1,30 @@
 
 * {
     box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f3f5;
+    color: #333;
     margin: 0;
     padding: 0;
 }
 
-body {
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-    background: #f4f6f8;
-    color: #222;
+.basket-page {
+    max-width: 900px;
+    margin: 60px auto;
+    background: #ffffff;
+    border-radius: 16px;
     padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.basket-page h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #222;
 }
 
 h2 {
