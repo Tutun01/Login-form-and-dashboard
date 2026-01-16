@@ -8,19 +8,11 @@ session_start();
     <title>About us</title>
         <link rel="stylesheet" href="CSS/about.css">
         <link rel="stylesheet" href="CSS/navbar.css">
+        <link rel="stylesheet" href="CSS/footer.css">
     </head>
     <body>
 
-    <header>
-        <img class="logo-picture" src="images/logo.png" alt="logo">
-        <h1 class="title-h1">About us</h1>
-        <nav class="navbar">
-            <a href="homepage.php">Homepage</a>
-            <a href="about.php">About us</a>
-            <a href="shop.php">Shop</a>
-            <a href="basket.php" class="basket-link">Cart</a>
-        </nav>
-    </header>
+    <?php include 'navbar.php'; ?>
 
     <div class="mainDiv">
         <div class="first-section">
@@ -52,6 +44,6 @@ session_start();
         </div>
 
     </div>
-
+        <?php include 'footer.php'; ?>
     </body>
 </html>

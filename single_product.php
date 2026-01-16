@@ -31,20 +31,12 @@ $product = $result->fetch_assoc();
     <title><?php echo htmlspecialchars($product['name']); ?> | Tech Store</title>
     <link rel="stylesheet" href="CSS/single_product.css">
     <link rel="stylesheet" href="CSS/navbar.css">
+    <link rel="stylesheet" href="CSS/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-<header>
-    <img class="logo-picture" src="images/logo.png" alt="logo">
-    <h1 class="title-h1">Market</h1>
-    <nav class="navbar">
-        <a href="homepage.php">Homepage</a>
-        <a href="about.php">About us</a>
-        <a href="shop.php">Shop</a>
-        <a href="basket.php" class="basket-link">Cart</a>
-    </nav>
-</header>
+<?php include 'navbar.php'; ?>
 
 <main class="product-container">
     <div class="product-image">
@@ -106,7 +98,7 @@ $product = $result->fetch_assoc();
 </main>
 
    <script src="JS/buy-popup.js"></script>
-
+    <?php include 'footer.php'; ?>
 </body>
 </html>
 

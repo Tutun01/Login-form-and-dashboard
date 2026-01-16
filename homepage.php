@@ -55,19 +55,11 @@ $articles = $data['articles'] ?? [];
     <title>Home Page</title>
    <link rel="stylesheet" href="CSS/homepage.css">
    <link rel="stylesheet" href="CSS/navbar.css">
+   <link rel="stylesheet" href="CSS/footer.css">
 </head>
 <body>
 
-<header>
-    <img class="logo-picture" src="images/logo.png" alt="logo">
-    <h1 class="title-h1">Homepage</h1>
-    <nav class="navbar">
-        <a href="homepage.php">Homepage</a>
-        <a href="about.php">About us</a>
-        <a href="shop.php">Shop</a>
-        <a href="basket.php" class="basket-link">Cart</a>
-    </nav>
-</header>
+<?php include 'navbar.php'; ?>
 
 <div class="banner">
   <div class="banner-inner">
@@ -181,6 +173,8 @@ $articles = $data['articles'] ?? [];
     </section>
 
  <script src="JS/slider.js"></script>
+
+    <?php include 'footer.php'; ?>
 </body>
 </html>
 

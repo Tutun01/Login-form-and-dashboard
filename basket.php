@@ -9,6 +9,7 @@ require_once 'database.php';
     <title>Your Cart</title>
     <link rel="stylesheet" href="CSS/basket.css">
     <link rel="stylesheet" href="CSS/navbar.css">
+    <link rel="stylesheet" href="CSS/footer.css">
 </head>
 <body>
 
@@ -21,16 +22,7 @@ if (empty($_SESSION['cart'])) {
 $totalSum = 0;
 ?>
 
-<header>
-    <img class="logo-picture" src="images/logo.png" alt="logo">
-    <h1 class="title-h1">Cart</h1>
-    <nav class="navbar">
-        <a href="homepage.php">Homepage</a>
-        <a href="about.php">About us</a>
-        <a href="shop.php">Shop</a>
-        <a href="basket.php" class="basket-link">Cart</a>
-    </nav>
-</header>
+<?php include 'navbar.php'; ?>
 
 
 <main class="basket-page">
@@ -74,6 +66,6 @@ $totalSum = 0;
 </h3>
 </main>
 <script src="JS/basket.js"></script>
-
+<?php include 'footer.php'; ?>
 </body>
 </html>
