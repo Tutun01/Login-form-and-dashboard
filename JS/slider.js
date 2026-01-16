@@ -18,3 +18,8 @@ prev.addEventListener('click', () => {
     slider.style.transform = `translateX(-${scrollAmount}px)`;
 });
 
+// JS for animation on banner
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+});
+

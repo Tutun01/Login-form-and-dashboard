@@ -46,6 +46,41 @@ curl_close($ch);
 $data = json_decode($response, true);
 $articles = $data['articles'] ?? [];
 
+$cacheDir = __DIR__ . '/cache';
+$cacheFile = $cacheDir . '/news.json';
+$cacheTime = 300;
+
+if (!is_dir($cacheDir)) {
+    mkdir($cacheDir, 0755, true);
+}
+
+if (file_exists($cacheFile) && time() - filemtime($cacheFile) < $cacheTime) {
+    $data = json_decode(file_get_contents($cacheFile), true);
+} else {
+    $ch = curl_init($url);
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT => 10,
+        CURLOPT_HTTPHEADER => [
+            'User-Agent: Mozilla/5.0',
+            'Accept: application/json'
+        ]
+    ]);
+
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    if ($response !== false) {
+        file_put_contents($cacheFile, $response);
+        $data = json_decode($response, true);
+    } else {
+        $data = [];
+    }
+}
+
+$articles = $data['articles'] ?? [];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +107,7 @@ $articles = $data['articles'] ?? [];
     </div>
 
     <div class="banner-visual">
-      <img src="images/banner image.png" alt="PC banner">
+      <img src="images/banner image.png" loading="lazy"  alt="PC banner">
     </div>
 
   </div>
@@ -154,7 +189,7 @@ $articles = $data['articles'] ?? [];
 
                         echo "
                         <div class='blog-card'>
-                            <img src='{$image}' alt='" . htmlspecialchars($article['title']) . "' class='blog-image'>
+                            <img src='{$image}'  alt='" . htmlspecialchars($article['title']) . "' class='blog-image'>
                             <h3>" . htmlspecialchars($article['title']) . "</h3>
                             <p>" . htmlspecialchars($article['description']) . "</p>
                             <a href='" . htmlspecialchars($article['url']) . "' target='_blank' class='Read_more'>
