@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+$pageTitle = 'About';
 ?>
 
 <!DOCTYPE html>

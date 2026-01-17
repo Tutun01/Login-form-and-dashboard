@@ -7,6 +7,7 @@
     $sql= "SELECT * FROM products";
     $result = $connect->query($sql);
 
+    $pageTitle = 'Shop';
 ?>
 
 <html>

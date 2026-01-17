@@ -9,6 +9,7 @@ if (!isset($_SESSION['email'])) {
     exit();
 }
 $email = $_SESSION['email'];
+$pageTitle = 'Homepage';
 
 $sql= "SELECT * FROM products";
 $result = $connect->query($sql); 
@@ -93,6 +94,7 @@ $articles = $data['articles'] ?? [];
    <link rel="stylesheet" href="CSS/footer.css">
 </head>
 <body>
+
 
 <?php include 'navbar.php'; ?>
 

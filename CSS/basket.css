@@ -74,14 +74,13 @@ h2 {
     font-weight: 600;
 
     cursor: pointer;
-    box-shadow: 0 8px 20px rgba(217, 54, 62, 0.35);
     transition: all 0.2s ease;
+    text-transform: uppercase;
 }
 
 .deleteBtn:hover {
     background: linear-gradient(135deg, #ff7875, #cf1322);
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(207, 19, 34, 0.45);
 }
 
 .deleteBtn:active {
@@ -108,23 +107,20 @@ h2 {
 }
 
 .buyBtn {
-    margin-left: auto;
-
     background: linear-gradient(135deg, #00c853, #00a844);
     color: #fff;
     border: none;
     border-radius: 14px;
-
     padding: 14px 28px;
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.5px;
-
     cursor: pointer;
- 
     transition: all 0.25s ease;
-
     text-transform: uppercase;
+
+    display: block;
+    margin: 0 auto 0 44.7rem;
 }
 
 .buyBtn:hover {

@@ -33,9 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (buyBtn) {
         buyBtn.addEventListener('click', () => {
-            alert("You have successfully completed your purchase.")
-
-              window.location.href = "checkout.php";
+            window.location.href = "checkout.php";
         });
     }
 

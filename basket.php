@@ -1,7 +1,16 @@
 <?php
 session_start();
 require_once 'database.php';
+require_once 'vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+\Stripe\Stripe::setApiKey($_ENV['STRIPE_SECRET_KEY']);
+
+$pageTitle = 'Cart';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,8 +71,11 @@ $totalSum = 0;
 
 <h3 class="grand-total">
     Grand Total: $<span id="grandTotal"><?= number_format($totalSum, 2) ?></span>
-    <button class="buyBtn">BUY</button>
 </h3>
+    <form action="checkout.php" method="POST">
+        <button class="buyBtn" type="submit">Buy</button><br>
+    </form>
+
 </main>
 <script src="JS/basket.js"></script>
 <?php include 'footer.php'; ?>
