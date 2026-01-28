@@ -9,11 +9,10 @@ body {
     background: linear-gradient(135deg, #0d1117, #161b22);
     color: #e6edf3;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    display: block;
     padding: 6rem 4rem 4rem 4rem;
+    position: relative;
+    overflow-x: hidden;
 }
 
 .title-admin {
@@ -22,9 +21,9 @@ body {
     left: 1rem;
     font-size: 2rem;
     font-weight: 600;
-    margin-bottom: 20px;
     text-align: left;
     color: #58a6ff;
+    z-index: 30;
 }
 
 .logout {
@@ -40,6 +39,7 @@ body {
     border-radius: 8px;
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 30;
 }
 
 .logout:hover {
@@ -47,60 +47,144 @@ body {
     transform: scale(1.05);
 }
 
-nav {
-    background: #21262d;
-    padding: 10px 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    margin-bottom: 30px;
-}
-
-nav ul {
-    list-style: none;
+#adminActions {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    width: min(1200px, 92vw);
+    z-index: 20;
+    transition: top 280ms ease, transform 280ms ease;
 }
 
-nav ul li a {
-    color: #c9d1d9;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
+body.panel-open #adminActions {
+    top: 90px;
+    transform: translate(-50%, 0);
 }
 
-nav ul li a:hover {
-    color: #58a6ff;
-}
-
-.card {
-    background: #21262d;
+#displayAllUser,
+#addUser,
+#displayProducts,
+#addProduct {
+    appearance: none;
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 12px;
-    padding: 30px 40px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    text-align: center;
-    max-width: 500px;
-    width: 90%;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    transition: transform 120ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
 }
 
-.card p {
-    font-size: 1rem;
-    color: #c9d1d9;
-    margin-bottom: 10px;
+#displayAllUser:hover,
+#addUser:hover,
+#displayProducts:hover,
+#addProduct:hover {
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.22);
+    transform: translateY(-1px);
 }
 
-#allUser {
-    width: 100%;
-    max-width: 900px;
-    margin-bottom: 2rem;
+#displayAllUser:active,
+#addUser:active,
+#displayProducts:active,
+#addProduct:active {
+    transform: translateY(0px) scale(0.99);
+}
+
+#displayAllUser:focus-visible,
+#addUser:focus-visible,
+#displayProducts:focus-visible,
+#addProduct:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.35), 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+#displayAllUser {
+    border-color: rgba(59, 130, 246, 0.35);
+    background: linear-gradient(180deg, rgba(59, 130, 246, 0.22), rgba(59, 130, 246, 0.10));
+}
+
+#displayAllUser:hover {
+    border-color: rgba(59, 130, 246, 0.55);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18), 0 10px 22px rgba(0, 0, 0, 0.28);
+}
+
+#addUser {
+    border-color: rgba(34, 197, 94, 0.32);
+    background: linear-gradient(180deg, rgba(34, 197, 94, 0.22), rgba(34, 197, 94, 0.10));
+}
+
+#addUser:hover {
+    border-color: rgba(34, 197, 94, 0.52);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.16), 0 10px 22px rgba(0, 0, 0, 0.28);
+}
+
+#displayProducts {
+    border-color: rgba(168, 85, 247, 0.32);
+    background: linear-gradient(180deg, rgba(168, 85, 247, 0.22), rgba(168, 85, 247, 0.10));
+}
+
+#displayProducts:hover {
+    border-color: rgba(168, 85, 247, 0.55);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.16), 0 10px 22px rgba(0, 0, 0, 0.28);
+}
+
+#addProduct {
+    border-color: rgba(245, 158, 11, 0.35);
+    background: linear-gradient(180deg, rgba(245, 158, 11, 0.22), rgba(245, 158, 11, 0.10));
+}
+
+#addProduct:hover {
+    border-color: rgba(245, 158, 11, 0.55);
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.16), 0 10px 22px rgba(0, 0, 0, 0.28);
+}
+
+#displayAllUser:disabled,
+#addUser:disabled,
+#displayProducts:disabled,
+#addProduct:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none;
+}
+
+#displayAllUser.is-active,
+#addUser.is-active,
+#displayProducts.is-active,
+#addProduct.is-active {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12), 0 10px 22px rgba(0, 0, 0, 0.28);
+}
+
+#allUser,
+#addNewUser,
+#allProducts,
+#addNewProduct {
+    position: fixed;
+    left: 50%;
+    top: 140px;
+    transform: translateX(-50%);
+    width: min(1200px, 92vw);
+    max-height: calc(100vh - 170px);
+    overflow: auto;
+    z-index: 10;
+    display: none;
 }
 
 table {
-    position: static;
-    margin-top: 2rem;
     width: 100%;
-    max-width: 900px;
     border-collapse: collapse;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     background-color: #161b22;
@@ -121,6 +205,8 @@ td {
     border-bottom: 1px solid #30363d;
     color: #c9d1d9;
     font-size: 0.95rem;
+    vertical-align: top;
+    word-break: break-word;
 }
 
 tr:hover {
@@ -128,7 +214,8 @@ tr:hover {
     transition: background-color 0.3s ease;
 }
 
-#allUser p {
+#allUser p,
+#allProducts p {
     text-align: center;
     color: #8b949e;
     font-size: 1rem;
@@ -151,75 +238,6 @@ tr:hover {
     transform: scale(1.05);
 }
 
-#addNewUser {
-    margin-top: 2rem;
-    background: #21262d;
-    border-radius: 12px;
-    padding: 30px 40px;
-    width: 100%;
-    max-width: 600px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-#addNewUser form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-#addNewUser input {
-    width: 100%;
-    padding: 12px 15px;
-    border-radius: 8px;
-    border: 1px solid #30363d;
-    background-color: #0d1117;
-    color: #e6edf3;
-    font-size: 0.95rem;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-#addNewUser input::placeholder {
-    color: #8b949e;
-}
-
-#addNewUser input:focus {
-    outline: none;
-    border-color: #58a6ff;
-    background-color: #161b22;
-}
-
-#submitBtn {
-    background-color: #238636;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 12px;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-#submitBtn:hover {
-    background-color: #2ea043;
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(46, 160, 67, 0.4);
-}
-
-#addNewUser::before {
-    content: "Add New User";
-    display: block;
-    color: #58a6ff;
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
 .delete-form {
     display: inline-block;
     margin-left: 8px;
@@ -231,11 +249,16 @@ tr:hover {
     color: #fff;
     border: none;
     border-radius: 6px;
-    padding: 6px 14px;
     font-weight: 500;
     cursor: pointer;
-    text-decoration: none;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+
+    white-space: nowrap;
+    min-width: 96px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
 }
 
 .delete-btn:hover {
@@ -248,23 +271,134 @@ tr:hover {
     transform: scale(0.97);
 }
 
+th:last-child,
+td:last-child {
+    width: 140px;
+    min-width: 140px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+#addNewUser,
+#addNewProduct {
+    background: #21262d;
+    border-radius: 12px;
+    padding: 26px 28px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+#addNewUser::before {
+    content: "Add New User";
+    display: block;
+    color: #58a6ff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#addNewProduct::before {
+    content: "Add New Product";
+    display: block;
+    color: #58a6ff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#addNewUser form,
+#addNewProduct form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#addNewUser input,
+#addNewProduct input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #30363d;
+    background-color: #0d1117;
+    color: #e6edf3;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+#addNewUser input::placeholder,
+#addNewProduct input::placeholder {
+    color: #8b949e;
+}
+
+#addNewUser input:focus,
+#addNewProduct input:focus {
+    border-color: #58a6ff;
+    background-color: #161b22;
+}
+
+#submitBtn,
+#saveProductBtn {
+    width: 100%;
+    background-color: #238636;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.12s ease, box-shadow 0.2s ease;
+}
+
+#submitBtn:hover,
+#saveProductBtn:hover {
+    background-color: #2ea043;
+    transform: translateY(-1px);
+    box-shadow: 0 0 10px rgba(46, 160, 67, 0.4);
+}
+
 @media (max-width: 768px) {
     body {
         padding: 4rem 2rem;
     }
-
-    table, #addNewUser {
-        width: 90%;
-    }
 }
 
 @media (max-width: 600px) {
-    h2 {
+    .title-admin {
         font-size: 1.6rem;
     }
 
     .logout {
         padding: 10px 20px;
         font-size: 0.9rem;
+    }
+
+    #adminActions {
+        flex-direction: column;
+        gap: 12px;
+        width: 92vw;
+    }
+
+    #displayAllUser,
+    #addUser,
+    #displayProducts,
+    #addProduct {
+        width: 100%;
+    }
+
+    body.panel-open #adminActions {
+        top: 90px;
+    }
+
+    #allUser,
+    #addNewUser,
+    #allProducts,
+    #addNewProduct {
+        top: 150px;
+        width: 92vw;
+        max-height: calc(100vh - 170px);
     }
 }
