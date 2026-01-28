@@ -109,7 +109,6 @@ $articles = $data['articles'] ?? [];
     </div>
 
     <div class="banner-visual">
-      <img src="images/banner image.png" loading="lazy"  alt="PC banner">
     </div>
 
   </div>
