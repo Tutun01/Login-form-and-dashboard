@@ -150,6 +150,8 @@ section {
     width: 100%;
     padding: 60px 0;
     background: #ffffff;
+
+
 }
 
 .banner-inner {
@@ -161,6 +163,8 @@ section {
     align-items: center;
     justify-content: space-between;
     gap: 60px;
+
+
 }
 
 .banner-content {
