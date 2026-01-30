@@ -92,6 +92,7 @@ $articles = $data['articles'] ?? [];
    <link rel="stylesheet" href="CSS/homepage.css">
    <link rel="stylesheet" href="CSS/navbar.css">
    <link rel="stylesheet" href="CSS/footer.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
@@ -103,7 +104,7 @@ $articles = $data['articles'] ?? [];
 
     <div class="banner-content">
       <h2 class="marquee-title">PC MARKET</h2>
-      <p class="marquee-subtitle">Top hardware, best prices</p>
+      <p class="marquee-subtitle">High-performance PC components at competitive prices</p>
       <p class="slogan">Your PC. Your Rules.</p>
       <a href="shop.php" class="cta">Shop now</a>
     </div>
